@@ -1,2 +1,5 @@
-Pillow
+Django
 django-cors-headers
+djangorestframework==3.14.0
+Pillow
+pytz

@@ -8,7 +8,7 @@ from django.contrib import admin
 # import the model Todo
 from .models import Section_details
 from .models import Chapter_details
-from .models import Description_details,Games_Type,Images
+from .models import Description_details,Games_Type,Images,PlatformAdmin
 
 # create a class for the admin-model integration
 class TodoAdmin1(admin.ModelAdmin):

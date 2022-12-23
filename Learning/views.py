@@ -8,7 +8,7 @@ from django.shortcuts import render
 # import view sets from the REST framework
 from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework.decorators import list_route
+# from rest_framework.decorators import list_route
 
 # import the TodoSerializer from the serializer file
 from .serializers import LearningSerializer, Title_detailsSerializer
@@ -16,7 +16,17 @@ from .models import Games_Type
 # import the Todo model from the models file
 from .models import Section_details
 # create a class for the Todo model viewsets
-class TodoView(viewsets.ModelViewSet):
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+from rest_framework import viewsets
+from rest_framework.decorators import api_view,action
+
+class TodoView(viewsets.ReadOnlyModelViewSet):
+
+
 
 	# create a serializer class and
 	# assign it to the TodoSerializer class
@@ -26,7 +36,8 @@ class TodoView(viewsets.ModelViewSet):
 	# with the Todo list objects
 	queryset = Section_details.objects.all()
 
-	@list_route()
+	# @api_view()
+	@action(detail=False)
 	def getDetails(self, request):
 		todo_id = request.GET.get('id')
 		print("todo_id",todo_id)
@@ -35,7 +46,8 @@ class TodoView(viewsets.ModelViewSet):
 
 		return Response({"message": message,"data": LearningSerializer(todo).data})
 
-	@list_route()
+	# @api_view()
+	@action(detail=False)
 	def getData(self, request):
 		data = Section_details.objects.filter(game_type__id=request.GET.get('id'))
 		result = Title_detailsSerializer(data,many=True).data
