@@ -1,5 +1,8 @@
-Django
-django-cors-headers
+asgiref==3.2.10
+Django==3.1
+django-cors-headers==3.13.0
+django-guardian==2.4.0
 djangorestframework==3.14.0
-Pillow
-pytz
+Pillow==9.3.0
+pytz==2022.7
+sqlparse==0.4.3
