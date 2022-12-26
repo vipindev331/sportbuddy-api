@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.apps import AppConfig
 
 
-class TodoConfig(AppConfig):
+class LearningConfig(AppConfig):
     name = 'Learning'
